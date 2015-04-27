@@ -10,6 +10,8 @@ $controller = "main";
 $method = "index";
 $param = array();
 
+include_once 'controllers/main.php';
+
 if(!empty($request)){
     if( strpos($request, $request_home) === 0){
         $request = substr($request, strlen($request_home));
@@ -25,6 +27,8 @@ if(!empty($request)){
             if(isset($components[2])){
                 $param = $components[2];
             }
+
+            include_once 'controllers/' . $controller . '.php';
         }
     }
 }
@@ -32,3 +36,16 @@ if(!empty($request)){
 var_dump($controller);
 var_dump($method);
 var_dump($param);
+
+$controller_class = '\Controllers\\' . ucfirst($controller) . "_Controller";
+var_dump($controller_class);
+
+$controller_instance = new $controller_class();
+
+// checks if the specified controller
+// supports that method
+if(method_exists($controller_instance, $method)){
+    call_user_func_array(
+        array($controller_instance, $method),
+        array($param));
+}
