@@ -13,6 +13,7 @@ $param = array();
 include_once 'config/db.php';
 include_once 'lib/database.php';
 include_once 'controllers/main.php';
+include_once 'models/main.php';
 
 if(!empty($request)){
     if( strpos($request, $request_home) === 0){
@@ -32,7 +33,7 @@ if(!empty($request)){
     }
 }
 
-$controller_class = '\Controllers\\' . ucfirst($controller) . "_Controller";
+$controller_class = "\Controllers\\" . ucfirst($controller) . "_Controller";
 
 $controller_instance = new $controller_class();
 
@@ -45,7 +46,6 @@ if(method_exists($controller_instance, $method)){
 }
 
 $db_object = \Lib\Database::get_instance();
-var_dump($db_object->get_db());
 
 // establishing a connection with the database
 $database_connection = $db_object->get_db();
