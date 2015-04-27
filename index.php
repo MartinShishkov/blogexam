@@ -10,6 +10,8 @@ $controller = "main";
 $method = "index";
 $param = array();
 
+include_once 'config/db.php';
+include_once 'lib/database.php';
 include_once 'controllers/main.php';
 
 if(!empty($request)){
@@ -17,9 +19,6 @@ if(!empty($request)){
         $request = substr($request, strlen($request_home));
 
         $components = explode('/', $request, 3);
-
-        var_dump($request);
-        var_dump($components);
 
         if(count($components) > 1){
             list($controller, $method) = $components;
@@ -33,12 +32,7 @@ if(!empty($request)){
     }
 }
 
-var_dump($controller);
-var_dump($method);
-var_dump($param);
-
 $controller_class = '\Controllers\\' . ucfirst($controller) . "_Controller";
-var_dump($controller_class);
 
 $controller_instance = new $controller_class();
 
@@ -49,3 +43,29 @@ if(method_exists($controller_instance, $method)){
         array($controller_instance, $method),
         array($param));
 }
+
+$db_object = \Lib\Database::get_instance();
+var_dump($db_object->get_db());
+
+// establishing a connection with the database
+$database_connection = $db_object->get_db();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
