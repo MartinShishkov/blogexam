@@ -15,6 +15,14 @@ class Users_Controller extends Main_Controller{
         include_once $this -> layout;
     }
 
+    public function view($id){
+        $template_name = DX_ROOT_DIR . $this -> views_dir . "register.php";
+        $users = $this->model->get($id);
+        var_dump($users);
+        //$template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
+        include_once $this -> layout;
+    }
+
     public function login(){
 
     }

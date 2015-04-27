@@ -8,8 +8,8 @@ class Main_Controller{
     protected $views_dir;
 
     public function __construct($views_dir = '/views/main/',
-                                $class_name = '\Controllers\Master_Controller',
-                                $model = 'master')
+                                $class_name = '\Controllers\Main_Controller',
+                                $model = 'main')
     {
         $this -> views_dir = $views_dir;
         $this->class_name = $class_name;
@@ -21,5 +21,4 @@ class Main_Controller{
 
         $this -> layout = DX_ROOT_DIR . 'views/shared/_layout.php';
     }
-
 }

@@ -35,6 +35,8 @@ if(!empty($request)){
 
 $controller_class = "\Controllers\\" . ucfirst($controller) . "_Controller";
 
+var_dump($controller_class);
+
 $controller_instance = new $controller_class();
 
 // checks if the specified controller
