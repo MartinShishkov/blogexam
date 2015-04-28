@@ -13,7 +13,7 @@ class Post_Model extends Main_Model{
     }
 
     public function find_by_tag_name($tag_name){
-        $query = sprintf("SELECT * FROM %s p
+        $query = sprintf("SELECT p.id, p.title, p.body, p.date_created, p.visits FROM %s p
 INNER JOIN `posts_tags` pt
 ON p.id=pt.post_id
 INNER JOIN `tags` t
@@ -54,6 +54,6 @@ WHERE t.name='%s'",
             }
         }
 
-        var_dump($this->tags);
+        //var_dump($this->tags);
     }
 }

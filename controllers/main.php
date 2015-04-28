@@ -26,7 +26,7 @@ class Main_Controller{
         // logged in user
         $this->logged_user = $this->auth->get_logged_user();
 
-        $this -> layout = DX_ROOT_DIR . 'views/shared/_layout.php';
+        $this->layout = DX_ROOT_DIR . 'views/shared/_layout.php';
     }
 
     public function index(){
