@@ -6,11 +6,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <?php echo($post["title"])?>
+                        <?php
+                            $post_path = DX_ROOT_URL . 'posts/view/' . $post["id"];
+                            echo("<a href='{$post_path}' class='link'>{$post["title"]}</a>")
+                        ?>
                     </h3>
                 </div>
-                <div class="panel-body">
-                    <?php echo($post["body"])?>
+                <div class="panel-body wordwrap">
+                    <?php echo(substr($post["body"], 0, 100) . "...")?>
                 </div>
             </div>
         </div>

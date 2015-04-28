@@ -40,7 +40,7 @@ class Auth{
         return self::$logged_user;
     }
 
-    public function login($username, $password){
+    /*public function register($username, $password){
         $db = \Lib\Database::get_instance();
         $db_connection = $db->get_db();
 
@@ -57,6 +57,32 @@ class Auth{
         if($row = $result_set->fetch_assoc()){
             $_SESSION["username"] = $username;
             $_SESSION["user_id"] = $row["id"];
+
+            return true;
+        }
+
+        return false;
+    }*/
+
+    public function login($username, $password){
+        $db = \Lib\Database::get_instance();
+        $db_connection = $db->get_db();
+
+        $statement = $db_connection->prepare("SELECT id, passwordHash FROM users WHERE username = ? LIMIT 1");
+        if ($statement === FALSE) {
+            die ("Mysql Error: " . $db_connection->error);
+        }
+
+        $statement->bind_param("s", $username);
+
+        $statement->execute();
+
+        $result_set = $statement->get_result();
+        if($row = $result_set->fetch_assoc()){
+            if(password_verify($password, $row["passwordHash"])){
+                $_SESSION["username"] = $username;
+                $_SESSION["user_id"] = $row["id"];
+            }
 
             return true;
         }

@@ -1,5 +1,5 @@
         </div>
-        <footer class="modal-footer navbar navbar-fixed-bottom">
+        <footer class="site-footer">
             <h4 class="text-center">All rights reserved. Blog System</h4>
         </footer>
     </body>

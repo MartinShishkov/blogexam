@@ -7,7 +7,7 @@ define( 'DX_ROOT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/examblog/' );
 $request = $_SERVER["REQUEST_URI"];
 $request_home = '/' . DX_ROOT_PATH;
 
-$controller = "main";
+$controller = "home";
 $method = "index";
 $param = array();
 
@@ -15,6 +15,7 @@ include_once 'config/db.php';
 include_once 'lib/database.php';
 include_once 'lib/auth.php';
 include_once 'controllers/main.php';
+include_once 'controllers/home.php';
 include_once 'models/main.php';
 
 if(!empty($request)){

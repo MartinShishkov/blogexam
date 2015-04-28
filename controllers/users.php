@@ -8,13 +8,27 @@ class Users_Controller extends Main_Controller{
     }
 
     public function register(){
-        if(!empty($_POST["username"]) && !empty($_POST["password"])){
+        if(!empty($_POST["username"]) &&
+            !empty($_POST["password"]) &&
+            !empty($_POST["confirm-password"]))
+        {
+
             $username = $_POST["username"];
             $password = $_POST["password"];
+            $confirm_password = $_POST["confirm-password"];
+            if($password != $confirm_password){
+                echo("<p>Passwords do not match!</p>");
+            }
+            else{
+                $user = array(
+                    "username" => $username,
+                    "passwordHash" => password_hash($password, PASSWORD_DEFAULT)
+                );
 
-            $is_logged_in = $this->auth->login($username, $password);
-            if($is_logged_in){
-                header("Location: " . DX_ROOT_URL . 'posts/index');
+                $result = $this->model->add($user);
+                if($result > 0){
+                    $this->login($username, $password);
+                }
             }
         }
 
@@ -24,8 +38,10 @@ class Users_Controller extends Main_Controller{
     }
 
     public function login(){
+        $home_location = DX_ROOT_URL . 'home/index';
+
         if(!empty($this->logged_user)){
-            header("Location: " . DX_ROOT_URL . 'posts/index');
+            header("Location: " . $home_location);
         }
 
         if(!empty($_POST["username"]) && !empty($_POST["password"])){
@@ -34,7 +50,7 @@ class Users_Controller extends Main_Controller{
 
             $is_logged_in = $this->auth->login($username, $password);
             if($is_logged_in){
-                header("Location: " . DX_ROOT_URL . 'posts/index');
+                header("Location: " . $home_location);
             }
         }
 

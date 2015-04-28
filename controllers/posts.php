@@ -30,11 +30,20 @@ class Posts_Controller extends Main_Controller{
             );
 
             $result = $this->model->add($post);
-            var_dump($result);
+            header("Location: " . DX_ROOT_URL);
         }
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "add.php";
 
+        include_once $this -> layout;
+    }
+
+    public function view($id){
+        $template_name = DX_ROOT_DIR . $this -> views_dir . "view.php";
+        // get() returns an array of 1 element and we are
+        // retrieving this element
+        $post = $this->model->get($id)[0];
+        //$template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
         include_once $this -> layout;
     }
 }

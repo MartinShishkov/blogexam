@@ -20,10 +20,12 @@
                     if(!empty($this->logged_user)){
                         echo("<p>Hello, {$this->logged_user["username"]}!</p>");
 
-                        $logout_path = DX_ROOT_URL . 'users/logout';
                         $home_path = DX_ROOT_URL;
+                        $posts_add_path = DX_ROOT_URL . 'posts/add';
+                        $logout_path = DX_ROOT_URL . 'users/logout';
 
                         echo("<li><a href='{$home_path}'>[Home]</a></li>");
+                        echo("<li><a href='{$posts_add_path}'>[Publish]</a></li>");
                         echo("<li><a href='{$logout_path}'>[Logout]</a></li>");
                     }else{
                         $home_path = DX_ROOT_URL;
@@ -38,4 +40,4 @@
                 echo("</ol>");
             ?>
         </header>
-        <div class="container-fluid">
+        <div class="container-fluid page-wrap">
