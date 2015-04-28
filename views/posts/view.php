@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-xs-6 col-xs-push-3">
-        <div class="panel panel-primary wordwrap">
+    <div class="col-sm-6 col-sm-push-3 col-xs-12">
+        <div class="panel panel-primary wordwrap cool">
             <div class="panel-heading">
                 <h3 class="panel-title"><?php echo($post["title"])?></h3>
             </div>
@@ -15,7 +15,7 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-4 col-xs-push-3">
+    <div class="col-sm-6 col-sm-push-3 col-xs-12">
         <form method="post">
             <input type="text" name="post_id" value="<?php echo($post["id"])?>" hidden="">
 

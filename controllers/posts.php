@@ -60,11 +60,13 @@ class Posts_Controller extends Main_Controller{
         // get() returns an array of 1 element and we are
         // retrieving this element
         $post = $this->model->get($id)[0];
+
         $this->model->visit($id);
+
+        $this->model->initialize_tags($post["id"]);
 
         $comments = $comments_controller->get_all($post["id"]);
 
-        //$template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
         include_once $this -> layout;
     }
 }

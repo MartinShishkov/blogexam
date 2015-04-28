@@ -49,3 +49,11 @@ html, body{
     width: 700px;
     height: 300px;
 }
+
+textarea{
+    resize: vertical;
+}
+
+.cool:hover{
+    box-shadow: 0px 2px 5px 0px #747cfb;
+}

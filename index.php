@@ -65,8 +65,3 @@ $database_connection = $db_object->get_db();
 
 
 
-
-
-
-
-
