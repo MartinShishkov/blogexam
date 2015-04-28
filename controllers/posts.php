@@ -26,7 +26,8 @@ class Posts_Controller extends Main_Controller{
             $post = array(
                 "title" => $post_title,
                 "body" => $post_body,
-                "user_id" => $_SESSION["user_id"]
+                "user_id" => $_SESSION["user_id"],
+                "date_created" => $date = date('Y-m-d H:i:s', time())
             );
 
             $result = $this->model->add($post);
