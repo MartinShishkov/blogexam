@@ -21,4 +21,10 @@ class Main_Controller{
 
         $this -> layout = DX_ROOT_DIR . 'views/shared/_layout.php';
     }
+
+    public function index(){
+        $template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
+
+        include_once $this -> layout;
+    }
 }

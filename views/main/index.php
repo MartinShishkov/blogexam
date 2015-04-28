@@ -1,1 +1,1 @@
-<h1>Main controller's constructor's method's view!!!</h1>
+<h1>Main controller's index() method's view!!!</h1>

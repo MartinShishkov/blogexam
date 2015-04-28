@@ -12,6 +12,7 @@ $param = array();
 
 include_once 'config/db.php';
 include_once 'lib/database.php';
+include_once 'lib/auth.php';
 include_once 'controllers/main.php';
 include_once 'models/main.php';
 
@@ -34,8 +35,6 @@ if(!empty($request)){
 }
 
 $controller_class = "\Controllers\\" . ucfirst($controller) . "_Controller";
-
-var_dump($controller_class);
 
 $controller_instance = new $controller_class();
 
