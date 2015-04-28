@@ -6,7 +6,6 @@ class Posts_Controller extends Main_Controller{
 
     public function __construct(){
         parent::__construct('views/posts/', get_class(), "post");
-
     }
 
     public function index(){

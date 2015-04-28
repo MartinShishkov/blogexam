@@ -12,19 +12,30 @@
         ?>
     </head>
     <body>
-        <header style="background-color: greenyellow">
-            <h1>App header</h1>
-            <?php
-                if(!empty($this->logged_user)){
-                    echo("<p>Hello, {$this->logged_user["username"]}!</p>");
-                    echo("<a href='#'>[Logout]</a>");
-                }else{
-                    $login_path = DX_ROOT_URL . 'users/login';
-                    $register_path = DX_ROOT_URL . 'users/register';
+        <header class="page-header">
+            <h1 class="text-center">Blog System</h1>
 
-                    echo("<a href='{$login_path}'>[Login]</a>");
-                    echo("<a href='{$register_path}'>[Register]</a>");
-                }
+            <?php
+                echo("<ol class='breadcrumb'>");
+                    if(!empty($this->logged_user)){
+                        echo("<p>Hello, {$this->logged_user["username"]}!</p>");
+
+                        $logout_path = DX_ROOT_URL . 'users/logout';
+                        $home_path = DX_ROOT_URL;
+
+                        echo("<li><a href='{$home_path}'>[Home]</a></li>");
+                        echo("<li><a href='{$logout_path}'>[Logout]</a></li>");
+                    }else{
+                        $home_path = DX_ROOT_URL;
+                        $login_path = DX_ROOT_URL . 'users/login';
+                        $register_path = DX_ROOT_URL . 'users/register';
+
+                        echo("<li><a href='{$home_path}'>[Home]</a></li>");
+                        echo("<li><a href='{$login_path}'>[Login]</a></li>");
+                        echo("<li><a href='{$register_path}'>[Register]</a></li>");
+
+                    }
+                echo("</ol>");
             ?>
         </header>
         <div class="container-fluid">
