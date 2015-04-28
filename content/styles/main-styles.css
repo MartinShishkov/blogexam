@@ -7,13 +7,17 @@ html, body{
     margin-top: 0px;
 }
 
-input{
+/*input{
     display: block;
     margin: 10px;
-}
+}*/
 
 .margin0{
     margin: 0;
+}
+
+.margin-10-bottom{
+    margin-bottom: 10px;
 }
 
 .page-wrap {

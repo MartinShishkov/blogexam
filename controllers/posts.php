@@ -40,11 +40,30 @@ class Posts_Controller extends Main_Controller{
     }
 
     public function view($id){
+        include_once DX_ROOT_DIR . "/controllers/comments.php";
+        $comments_controller = new Comments_Controller();
+
+        if(!empty($_POST["author_name"]) && !empty($_POST["body"])){
+            $name = $_POST["author_name"];
+            $body = $_POST["body"];
+            $post_id = $_POST["post_id"];
+            $email = $_POST["author_email"];
+
+            if(empty($email)){
+                $email = null;
+            }
+
+            $comments_controller->add($post_id, $name, $email, $body);
+        }
+
         $template_name = DX_ROOT_DIR . $this -> views_dir . "view.php";
         // get() returns an array of 1 element and we are
         // retrieving this element
         $post = $this->model->get($id)[0];
         $this->model->visit($id);
+
+        $comments = $comments_controller->get_all($post["id"]);
+
         //$template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
         include_once $this -> layout;
     }

@@ -1,7 +1,7 @@
 <h1>Home view</h1>
 
+<div class="row">
 <?php foreach($posts as $post ): ?>
-    <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -24,6 +24,5 @@
             </div>
 
         </div>
-
-    </div>
 <?php endforeach ?>
+</div>
