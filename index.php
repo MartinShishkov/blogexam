@@ -2,6 +2,7 @@
 
 define("DX_ROOT_DIR", dirname(__FILE__) . '/');
 define("DX_ROOT_PATH", basename(dirname(__FILE__)) . '/');
+define( 'DX_ROOT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/examblog/' );
 
 $request = $_SERVER["REQUEST_URI"];
 $request_home = '/' . DX_ROOT_PATH;
@@ -50,8 +51,6 @@ $db_object = \Lib\Database::get_instance();
 
 // establishing a connection with the database
 $database_connection = $db_object->get_db();
-
-
 
 
 

@@ -2,3 +2,7 @@ input{
     display: block;
     margin: 10px;
 }
+
+a{
+    display: block;
+}

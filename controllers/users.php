@@ -22,17 +22,16 @@ class Users_Controller extends Main_Controller{
     }
 
     public function login(){
-        var_dump($_SESSION);
-
         if(!empty($_POST["username"]) && !empty($_POST["password"])){
             $username = $_POST["username"];
             $password = $_POST["password"];
 
             $is_logged_in = $this->auth->login($username, $password);
-            var_dump($is_logged_in);
+            if($is_logged_in){
+                header("Location: " . DX_ROOT_URL . 'posts/index');
+            }
         }
 
-        var_dump($_POST);
         $template_name = DX_ROOT_DIR . $this -> views_dir . "login.php";
 
         include_once $this -> layout;

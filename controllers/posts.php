@@ -6,6 +6,7 @@ class Posts_Controller extends Main_Controller{
 
     public function __construct(){
         parent::__construct('views/posts/', get_class(), "post");
+
     }
 
     public function index(){
@@ -16,9 +17,7 @@ class Posts_Controller extends Main_Controller{
 
     public function add(){
         if(empty($this->logged_user["user_id"])){
-            $location = DX_ROOT_DIR . '/users/login.php';
-            var_dump($location);
-            //header("Location: " . $location);
+            header("Location: " . DX_ROOT_URL);
         }
 
         if(!empty($_POST["post-title"]) && !empty($_POST["post-body"])){
