@@ -22,14 +22,13 @@ class Users_Controller extends Main_Controller{
     }
 
     public function login(){
-        $auth = \Lib\Auth::get_instance();
         var_dump($_SESSION);
 
         if(!empty($_POST["username"]) && !empty($_POST["password"])){
             $username = $_POST["username"];
             $password = $_POST["password"];
 
-            $is_logged_in = $auth->login($username, $password);
+            $is_logged_in = $this->auth->login($username, $password);
             var_dump($is_logged_in);
         }
 
@@ -38,5 +37,4 @@ class Users_Controller extends Main_Controller{
 
         include_once $this -> layout;
     }
-
 }

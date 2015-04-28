@@ -62,9 +62,27 @@ class Main_Model{
         return $results;
     }
 
+    public function add($element){
+        $keys = array_keys($element);
+        $values = array();
+
+        foreach($element as $key => $value){
+            $values[] = "'" . $this->db->real_escape_string($value) . "'";
+        }
+
+        $keys = implode($keys, ',');
+        $values = implode($values, ',');
+
+        $query = "INSERT INTO {$this->table}($keys) VALUES ($values)";
+        var_dump($query);
+
+        $this->db->query($query);
+
+        return $this->db->affected_rows;
+    }
+
     public function get($id){
         return $this->find(array("where" => "id = " . $id));
-
     }
 
     protected function process_results($result_set){

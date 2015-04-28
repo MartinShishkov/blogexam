@@ -19,6 +19,13 @@ class Main_Controller{
 
         $this->model = new $model_class(array("table" => "none"));
 
+        $this->auth = \Lib\Auth::get_instance();
+
+        // gets the current user, that way
+        // every controller will have access to the
+        // logged in user
+        $this->logged_user = $this->auth->get_logged_user();
+
         $this -> layout = DX_ROOT_DIR . 'views/shared/_layout.php';
     }
 
