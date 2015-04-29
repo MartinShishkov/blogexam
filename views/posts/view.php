@@ -49,7 +49,7 @@
 <?php foreach($comments as $comment): ?>
     <div class="row">
         <div class="col-md-6 col-md-push-3">
-                <div class="panel panel-default">
+                <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <?php

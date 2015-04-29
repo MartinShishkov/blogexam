@@ -41,7 +41,7 @@ class Posts_Controller extends Main_Controller{
 
                 $post_arr = $this->model->find(array(
                     "where" => "title = '" . $post_title . "'")
-                )[0];
+                );
 
                 if(!empty($post_arr)){
                     $post = $post_arr[0];
