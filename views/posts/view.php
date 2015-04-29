@@ -10,10 +10,14 @@
             <div class="panel-footer">
                 <?php
                     echo($post["date_created"]);
-
-                    $tags_string = implode(", ", $tag_names);
-                    echo("<p class='pull-right'>{$tags_string}</p>");
                 ?>
+                <div class="pull-right">
+                    <?php
+                        foreach($tag_names as $tag_name){
+                            echo("<span class='label label-success margin2'>{$tag_name}</span>");
+                        }
+                    ?>
+                </div>
             </div>
         </div>
     </div>

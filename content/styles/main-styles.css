@@ -16,6 +16,10 @@ html, body{
     margin: 0;
 }
 
+.margin2{
+    margin: 2px;
+}
+
 .margin-10-bottom{
     margin-bottom: 10px;
 }
