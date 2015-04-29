@@ -11,7 +11,7 @@
             </div>
             <div class="input-group margin-10-bottom">
                 <span class="input-group-addon" id="basic-addon1">Tags*</span>
-                <input type="email" name="tags" class="form-control" placeholder="Tags..." aria-describedby="basic-addon1">
+                <input type="text" name="tags" class="form-control" placeholder="Tags..." aria-describedby="basic-addon1">
             </div>
             <div class="input-group">
                 <input type="submit" value="Publish" class="btn btn-primary">

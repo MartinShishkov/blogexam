@@ -8,7 +8,12 @@
                 <?php echo($post["body"])?>
             </div>
             <div class="panel-footer">
-                <?php echo($post["date_created"])?>
+                <?php
+                    echo($post["date_created"]);
+
+                    $tags_string = implode(", ", $tag_names);
+                    echo("<p class='pull-right'>{$tags_string}</p>");
+                ?>
             </div>
         </div>
     </div>

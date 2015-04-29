@@ -9,7 +9,6 @@ class Home_Controller extends Main_Controller{
         parent::__construct('views/home/', get_class(), "post");
     }
 
-
     public function index(){
         $posts = $this->model->find();
 
@@ -20,11 +19,8 @@ class Home_Controller extends Main_Controller{
     }
 
     public function search($tag_name){
-        echo("This is in the search nigga " . htmlspecialchars($tag_name));
-
         include_once DX_ROOT_DIR . 'models/tag.php';
         $tag = new Tag_Model();
-
         $posts = $this->model->find_by_tag_name($tag_name);
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";

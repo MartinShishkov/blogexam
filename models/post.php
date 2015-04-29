@@ -34,26 +34,25 @@ WHERE t.name='%s'",
         return $this->db->affected_rows;
     }
 
-    public function initialize_tags($id){
-        include_once DX_ROOT_DIR . 'models/tags_posts.php';
-        $tags_posts = (new Tags_Posts_Model())->find();
+    public function get_tags($id){
+        //SELECT t.name FROM tags t INNER JOIN posts_tags pt ON t.id=pt.tag_id INNER JOIN posts p ON p.id=pt.post_id WHERE p.id=32
 
-        include_once DX_ROOT_DIR . 'models/tag.php';
-        $tags = (new Tag_Model())->find();
+        $query = sprintf("SELECT t.name FROM tags t
+INNER JOIN posts_tags pt
+ON t.id=pt.tag_id
+INNER JOIN posts p
+ON p.id=pt.post_id
+WHERE p.id= %d", mysqli_real_escape_string($this->db, $id));
 
-        $tag_ids = array();
-        foreach($tags_posts as $tag_post){
-            if($tag_post["post_id"] === $id){
-                array_push($tag_ids, $tag_post["tag_id"]);
-            }
-        }
+        $result_set = $this->db->query($query);
 
+        $tags = $this->process_results($result_set);
+
+        $tag_names = array();
         foreach($tags as $tag){
-            if(in_array($tag["id"], $tag_ids)){
-                array_push($this->tags, $tag["name"]);
-            }
+            array_push($tag_names, $tag["name"]);
         }
 
-        //var_dump($this->tags);
+        return $tag_names;
     }
 }

@@ -2,6 +2,9 @@
 
 namespace Controllers;
 
+use Models\Tag_Model;
+use Models\Tags_Posts_Model;
+
 class Posts_Controller extends Main_Controller{
 
     public function __construct(){
@@ -24,6 +27,7 @@ class Posts_Controller extends Main_Controller{
         if(isset($_POST["post-title"]) && isset($_POST["post-body"])){
             $post_title = trim($_POST["post-title"]);
             $post_body = trim($_POST["post-body"]);
+            $post_tags = explode(',', trim($_POST["tags"]));
 
             if(!empty($post_title) && !empty($post_body)){
                 $post = array(
@@ -34,6 +38,22 @@ class Posts_Controller extends Main_Controller{
                 );
 
                 $result = $this->model->add($post);
+
+                $post_arr = $this->model->find(array(
+                    "where" => "title = '" . $post_title . "'")
+                )[0];
+
+                if(!empty($post_arr)){
+                    $post = $post_arr[0];
+
+                    include_once DX_ROOT_DIR . 'models/tag.php';
+                    $tag = new Tag_Model();
+
+                    foreach($post_tags as $tag_name){
+                        $tag->add_tag_to_post($post["id"], trim($tag_name));
+                    }
+                }
+
                 header("Location: " . DX_ROOT_URL);
             }
             else{
@@ -76,9 +96,9 @@ class Posts_Controller extends Main_Controller{
 
         $this->model->visit($id);
 
-        $this->model->initialize_tags($post["id"]);
+        $tag_names = $this->model->get_tags($id);
 
-        $comments = $comments_controller->get_all($post["id"]);
+        $comments = $comments_controller->get_all($id);
 
         include_once $this -> layout;
     }
