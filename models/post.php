@@ -55,4 +55,13 @@ WHERE p.id= %d", mysqli_real_escape_string($this->db, $id));
 
         return $tag_names;
     }
+
+    public function get_recent_posts(){
+        //
+        $query = sprintf("SELECT * FROM posts p ORDER BY p.date_created DESC LIMIT 4");
+
+        $result_set = $this->db->query($query);
+        $recent_posts = $this->process_results($result_set);
+        return $recent_posts;
+    }
 }

@@ -61,3 +61,11 @@ textarea{
 .cool:hover{
     box-shadow: 0px 2px 5px 0px #747cfb;
 }
+
+.bold{
+    font-weight: bold;
+}
+
+.italic{
+    font-style: italic;
+}

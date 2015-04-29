@@ -27,3 +27,24 @@
     <?php endforeach ?>
 </div>
 
+<div class="col-md-5 pull-right col-xs-6">
+    <h3>Recent posts</h3>
+    <div class="list-group">
+        <?php foreach($recent_posts as $recent_post):
+            $recent_post_path = DX_ROOT_URL . 'posts/view/' . $recent_post["id"];
+            ?>
+            <a href="<?php echo($recent_post_path)?>" class="list-group-item">
+                <h4 class="list-group-item-heading">
+                    <?php echo($recent_post["title"]);?>
+                </h4>
+                <p class="list-group-item-text"><?php echo(substr($recent_post["body"], 0, 20) . "...")?></p>
+                <p class="list-group-item-text bold italic margin2"><?php echo($recent_post["date_created"])?></p>
+            </a>
+        <?php endforeach ?>
+    </div>
+</div>
+
+<div class="col-md-5 pull-right col-xs-6">
+    <h3>Most popular tags</h3>
+
+</div>

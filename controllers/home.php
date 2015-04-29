@@ -11,6 +11,7 @@ class Home_Controller extends Main_Controller{
 
     public function index(){
         $posts = $this->model->find();
+        $recent_posts = $this->model->get_recent_posts();
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
 
