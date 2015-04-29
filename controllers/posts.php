@@ -19,19 +19,24 @@ class Posts_Controller extends Main_Controller{
             header("Location: " . DX_ROOT_URL);
         }
 
-        if(!empty($_POST["post-title"]) && !empty($_POST["post-body"])){
-            $post_title = $_POST["post-title"];
-            $post_body = $_POST["post-body"];
+        if(isset($_POST["post-title"]) && isset($_POST["post-body"])){
+            $post_title = trim($_POST["post-title"]);
+            $post_body = trim($_POST["post-body"]);
 
-            $post = array(
-                "title" => $post_title,
-                "body" => $post_body,
-                "user_id" => $_SESSION["user_id"],
-                "date_created" => $date = date('Y-m-d H:i:s', time())
-            );
+            if(!empty($post_title) && !empty($post_body)){
+                $post = array(
+                    "title" => $post_title,
+                    "body" => $post_body,
+                    "user_id" => $_SESSION["user_id"],
+                    "date_created" => $date = date('Y-m-d H:i:s', time())
+                );
 
-            $result = $this->model->add($post);
-            header("Location: " . DX_ROOT_URL);
+                $result = $this->model->add($post);
+                header("Location: " . DX_ROOT_URL);
+            }
+            else{
+                echo("Empty title or body are not allowed!");
+            }
         }
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "add.php";
