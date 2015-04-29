@@ -30,7 +30,7 @@
     <?php endforeach ?>
 </div>
 
-<div class="col-md-5 pull-right col-xs-6">
+<div class="col-md-5 pull-right col-xs-12">
     <h3>Recent posts</h3>
     <div class="list-group">
         <?php foreach($recent_posts as $recent_post):
@@ -46,9 +46,15 @@
             </a>
         <?php endforeach ?>
     </div>
-</div>
 
-<div class="col-md-5 pull-right col-xs-6">
     <h3>Most popular tags</h3>
-
+    <?php foreach($popular_tags as $tag):
+        $search_post_path = DX_ROOT_URL . 'home/search/' . $tag;
+        ?>
+        <a href="<?php echo($search_post_path)?>" class="list-group-item">
+            <h4 class="list-group-item-heading">
+                <span class="label label-primary"><?php echo($tag);?></span>
+            </h4>
+        </a>
+    <?php endforeach ?>
 </div>

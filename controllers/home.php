@@ -13,6 +13,10 @@ class Home_Controller extends Main_Controller{
         $posts = $this->model->get_posts_with_author();
         $recent_posts = $this->model->get_recent_posts();
 
+        include_once DX_ROOT_DIR . "models/tag.php";
+        $tag_model = new Tag_Model();
+        $popular_tags = $tag_model->get_popular_tags();
+
         $template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
 
         //$template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
@@ -25,6 +29,10 @@ class Home_Controller extends Main_Controller{
         $posts = $this->model->find_by_tag_name($tag_name);
 
         $recent_posts = $this->model->get_recent_posts();
+
+        include_once DX_ROOT_DIR . "models/tag.php";
+        $tag_model = new Tag_Model();
+        $popular_tags = $tag_model->get_popular_tags();
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
         include_once $this -> layout;
