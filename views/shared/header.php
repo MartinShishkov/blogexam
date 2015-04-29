@@ -39,7 +39,7 @@
                                     $logout_path = DX_ROOT_URL . 'users/logout';
 
                                     echo("<li><a href='{$posts_add_path}'>Publish</a></li>");
-                                    echo("<li><a href='{$logout_path}'>Logout({$this->logged_user["username"]})</a></li>");
+                                    echo("<li><a href='{$logout_path}'>Logout{ {$this->logged_user["username"]} }</a></li>");
                                 }else{
                                     $login_path = DX_ROOT_URL . 'users/login';
                                     $register_path = DX_ROOT_URL . 'users/register';
