@@ -92,14 +92,19 @@ class Posts_Controller extends Main_Controller{
         $template_name = DX_ROOT_DIR . $this -> views_dir . "view.php";
         // get() returns an array of 1 element and we are
         // retrieving this element
-        $post = $this->model->get($id)[0];
+        $posts_arr = $this->model->get($id);
 
-        $this->model->visit($id);
+        if(!empty($posts_arr)){
+            $post = $posts_arr[0];
 
-        $tag_names = $this->model->get_tags($id);
+            $this->model->visit($id);
+            $tag_names = $this->model->get_tags($id);
+            $comments = $comments_controller->get_all($id);
 
-        $comments = $comments_controller->get_all($id);
-
-        include_once $this -> layout;
+            include_once $this -> layout;
+        }
+        else{
+            header("Location: " . DX_ROOT_URL);
+        }
     }
 }
