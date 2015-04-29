@@ -8,27 +8,30 @@ class Users_Controller extends Main_Controller{
     }
 
     public function register(){
-        if(!empty($_POST["username"]) &&
-            !empty($_POST["password"]) &&
-            !empty($_POST["confirm-password"]))
-        {
+        if(isset($_POST["username"]) && isset($_POST["password"])){
+            $username = trim($_POST["username"]);
+            $password = trim($_POST["password"]);
+            $confirm_password = trim($_POST["confirm-password"]);
 
-            $username = $_POST["username"];
-            $password = $_POST["password"];
-            $confirm_password = $_POST["confirm-password"];
-            if($password != $confirm_password){
-                echo("<p>Passwords do not match!</p>");
+            if(!empty($username) && !empty($password))
+            {
+                if($password != $confirm_password){
+                    echo("<p>Passwords do not match!</p>");
+                }
+                else{
+                    $user = array(
+                        "username" => $username,
+                        "passwordHash" => password_hash($password, PASSWORD_DEFAULT)
+                    );
+
+                    $result = $this->model->add($user);
+                    if($result > 0){
+                        $this->login($username, $password);
+                    }
+                }
             }
             else{
-                $user = array(
-                    "username" => $username,
-                    "passwordHash" => password_hash($password, PASSWORD_DEFAULT)
-                );
-
-                $result = $this->model->add($user);
-                if($result > 0){
-                    $this->login($username, $password);
-                }
+                echo("Empty username or password are not allowed!");
             }
         }
 
@@ -44,14 +47,17 @@ class Users_Controller extends Main_Controller{
             header("Location: " . $home_location);
         }
 
-        if(!empty($_POST["username"]) && !empty($_POST["password"])){
-            $username = $_POST["username"];
-            $password = $_POST["password"];
+        if(isset($_POST["username"]) && isset($_POST["password"])){
+            $username = trim($_POST["username"]);
+            $password = trim($_POST["password"]);
 
-            $is_logged_in = $this->auth->login($username, $password);
-            if($is_logged_in){
-                header("Location: " . $home_location);
+            if(!empty($username) && !empty($password)){
+                $is_logged_in = $this->auth->login($username, $password);
+                if($is_logged_in){
+                    header("Location: " . $home_location);
+                }
             }
+            echo("Empty username or password are not allowed!");
         }
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "login.php";

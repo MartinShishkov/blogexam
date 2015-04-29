@@ -14,6 +14,8 @@ class Posts_Controller extends Main_Controller{
         include_once $this -> layout;
     }
 
+
+    // Publishing a new post by the current user
     public function add(){
         if(empty($this->logged_user["user_id"])){
             header("Location: " . DX_ROOT_URL);
@@ -44,21 +46,27 @@ class Posts_Controller extends Main_Controller{
         include_once $this -> layout;
     }
 
+    // Visiting a post by an anonymous user
     public function view($id){
         include_once DX_ROOT_DIR . "/controllers/comments.php";
         $comments_controller = new Comments_Controller();
 
-        if(!empty($_POST["author_name"]) && !empty($_POST["body"])){
-            $name = $_POST["author_name"];
-            $body = $_POST["body"];
+        if(isset($_POST["author_name"]) && isset($_POST["body"])){
+            $name = trim($_POST["author_name"]);
+            $body = trim($_POST["body"]);
             $post_id = $_POST["post_id"];
-            $email = $_POST["author_email"];
+            $email = trim($_POST["author_email"]);
 
-            if(empty($email)){
-                $email = null;
+            if(!empty($name) && !empty($body)){
+                if(empty($email)){
+                    $email = null;
+                }
+
+                $comments_controller->add($post_id, $name, $email, $body);
             }
-
-            $comments_controller->add($post_id, $name, $email, $body);
+            else{
+                echo("Empty name or body are not allowed!");
+            }
         }
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "view.php";

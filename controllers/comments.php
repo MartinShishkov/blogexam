@@ -13,7 +13,7 @@ class Comments_Controller extends Main_Controller{
                 "post_id" => $post_id,
                 "author_name" => $name,
                 "body" => $body,
-                "author_email" => $email,
+                "author_email" => empty($email) ? null : $email,
                 "date_created" => $date = date('Y-m-d H:i:s', time())
             );
 

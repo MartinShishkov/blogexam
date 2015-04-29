@@ -45,5 +45,19 @@
                 </form>
             </li>
             <?php echo("</ol>"); ?>
+
+            <?php
+                if(isset($_POST["search"])){
+                    $tag_name = trim($_POST["search"]);
+                    if(!empty($tag_name)){
+                        $search_location = DX_ROOT_URL . 'home/search/' . $tag_name;
+
+                        header("Location: " . $search_location);
+                    }
+                    else{
+                        echo("Empty tag names are not allowed!");
+                    }
+                }
+            ?>
         </header>
         <div class="container-fluid page-wrap">
