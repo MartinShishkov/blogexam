@@ -15,11 +15,14 @@
                     </div>
 
                     <div class="panel-body wordwrap">
-                        <?php echo(substr($post["body"], 0, 100) . "...")?>
+                        <?php echo(substr($post["body"], 0, 250) . "...")?>
                     </div>
 
                     <div class="panel-footer">
-                        <?php echo($post["date_created"])?>
+                        <?php
+                            echo("<span>{$post["username"]}</span>");
+                            echo("<span class='float-right'>{$post["date_created"]}</span>");
+                        ?>
                     </div>
                 </div>
             </div>
@@ -38,6 +41,7 @@
                     <?php echo($recent_post["title"]);?>
                 </h4>
                 <p class="list-group-item-text"><?php echo(substr($recent_post["body"], 0, 20) . "...")?></p>
+                <p class="list-group-item-text bold margin2"><?php echo($recent_post["username"])?></p>
                 <p class="list-group-item-text bold italic margin2"><?php echo($recent_post["date_created"])?></p>
             </a>
         <?php endforeach ?>

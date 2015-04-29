@@ -5,46 +5,59 @@
             $styles_path = $contents_path . '/styles';
             $bootstrap_path = $contents_path . '/bootstrap';
 
+            echo("<link href='{$bootstrap_path}/js/jquery.js' rel='stylesheet'>");
+            echo("<link href='{$bootstrap_path}/js/bootstrap.min.js' rel='stylesheet'>");
             echo("<link href='{$bootstrap_path}/css/bootstrap.min.css' rel='stylesheet'>");
             echo("<link href='{$bootstrap_path}/css/bootstrap-theme.min.css' rel='stylesheet'>");
-            echo("<link href='{$bootstrap_path}/js/bootstrap.min.js' rel='stylesheet'>");
             echo("<link href='{$styles_path}/main-styles.css' rel='stylesheet'>");
         ?>
     </head>
     <body>
-        <header class="page-header">
+        <header>
             <h1 class="text-center">Blog System</h1>
-
-            <?php
-                echo("<ol class='breadcrumb'>");
-            ?>
-            <?php
-                $home_path = DX_ROOT_URL;
-                echo("<li><a href='{$home_path}'>[Home]</a></li>");
-                    if(!empty($this->logged_user)){
-                        $posts_add_path = DX_ROOT_URL . 'posts/add';
-                        $logout_path = DX_ROOT_URL . 'users/logout';
-
-                        echo("<li><a href='{$posts_add_path}'>[Publish]</a></li>");
-                        echo("<li><a href='{$logout_path}'>[Logout]</a></li>");
-                        echo("<p>Hello, {$this->logged_user["username"]}!</p>");
-                    }else{
-                        $login_path = DX_ROOT_URL . 'users/login';
-                        $register_path = DX_ROOT_URL . 'users/register';
-
-                        echo("<li><a href='{$login_path}'>[Login]</a></li>");
-                        echo("<li><a href='{$register_path}'>[Register]</a></li>");
-                    }
-            ?>
-            <li>
-                <form method="post" class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                        <input type="text" name="search" class="form-control" placeholder="Search">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </li>
-            <?php echo("</ol>"); ?>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <?php
+                                $home_path = DX_ROOT_URL;
+                                echo("<li><a href='{$home_path}'>Home</a></li>");
+
+                                if(!empty($this->logged_user)){
+                                    $posts_add_path = DX_ROOT_URL . 'posts/add';
+                                    $logout_path = DX_ROOT_URL . 'users/logout';
+
+                                    echo("<li><a href='{$posts_add_path}'>Publish</a></li>");
+                                    echo("<li><a href='{$logout_path}'>Logout({$this->logged_user["username"]})</a></li>");
+                                }else{
+                                    $login_path = DX_ROOT_URL . 'users/login';
+                                    $register_path = DX_ROOT_URL . 'users/register';
+
+                                    echo("<li><a href='{$login_path}'>Login</a></li>");
+                                    echo("<li><a href='{$register_path}'>Register</a></li>");
+                                }
+                            ?>
+                        </ul>
+                        <form method="post" class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
 
             <?php
                 if(isset($_POST["search"])){

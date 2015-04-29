@@ -10,7 +10,7 @@ class Home_Controller extends Main_Controller{
     }
 
     public function index(){
-        $posts = $this->model->find();
+        $posts = $this->model->get_posts_with_author();
         $recent_posts = $this->model->get_recent_posts();
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
@@ -23,6 +23,8 @@ class Home_Controller extends Main_Controller{
         include_once DX_ROOT_DIR . 'models/tag.php';
         $tag = new Tag_Model();
         $posts = $this->model->find_by_tag_name($tag_name);
+
+        $recent_posts = $this->model->get_recent_posts();
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "index.php";
         include_once $this -> layout;
