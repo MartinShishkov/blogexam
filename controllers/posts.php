@@ -20,7 +20,7 @@ class Posts_Controller extends Main_Controller{
 
 
     // Publishing a new post by the current user
-    public function add(){
+    public function publish(){
         if(empty($this->logged_user["user_id"])){
             header("Location: " . DX_ROOT_URL);
         }
@@ -65,7 +65,7 @@ class Posts_Controller extends Main_Controller{
             }
         }
 
-        $template_name = DX_ROOT_DIR . $this -> views_dir . "add.php";
+        $template_name = DX_ROOT_DIR . $this -> views_dir . "publish.php";
 
         include_once $this -> layout;
     }

@@ -35,11 +35,11 @@
                                 echo("<li><a href='{$home_path}'>Home</a></li>");
 
                                 if(!empty($this->logged_user)){
-                                    $posts_add_path = DX_ROOT_URL . 'posts/add';
+                                    $posts_publish_path = DX_ROOT_URL . 'posts/publish';
                                     $tags_add_path = DX_ROOT_URL . 'tags/add';
                                     $logout_path = DX_ROOT_URL . 'users/logout/' . $_SESSION["formToken"];
 
-                                    echo("<li><a href='{$posts_add_path}'>Publish</a></li>");
+                                    echo("<li><a href='{$posts_publish_path}'>Publish</a></li>");
                                     echo("<li><a href='{$tags_add_path}'>New Tag</a></li>");
                                     echo("<li><a href='{$logout_path}'>Logout{ <span class='dotted'>{$this->logged_user["username"]}</span> }</a></li>");
                                 }else{
