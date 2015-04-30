@@ -65,9 +65,11 @@ class Users_Controller extends Main_Controller{
         include_once $this -> layout;
     }
 
-    public function logout(){
-        session_destroy();
-        header("Location: " . DX_ROOT_URL);
+    public function logout($token){
+        if($token === $_SESSION["formToken"]){
+            session_destroy();
+            header("Location: " . DX_ROOT_URL);
+        }
     }
 
     public function view($id){

@@ -37,7 +37,7 @@
                                 if(!empty($this->logged_user)){
                                     $posts_add_path = DX_ROOT_URL . 'posts/add';
                                     $tags_add_path = DX_ROOT_URL . 'tags/add';
-                                    $logout_path = DX_ROOT_URL . 'users/logout';
+                                    $logout_path = DX_ROOT_URL . 'users/logout/' . $_SESSION["formToken"];
 
                                     echo("<li><a href='{$posts_add_path}'>Publish</a></li>");
                                     echo("<li><a href='{$tags_add_path}'>New Tag</a></li>");

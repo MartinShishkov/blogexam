@@ -15,7 +15,7 @@ class Tags_Controller extends Main_Controller{
         if(isset($_POST["tag_name"])){
             $tag_name = htmlspecialchars(trim($_POST["tag_name"]));
 
-            if(!empty($tag_name)){
+            if(!empty($tag_name) && $_POST["formToken"] === $_SESSION["formToken"]){
                 $tag = array(
                     "name" => $tag_name
                 );

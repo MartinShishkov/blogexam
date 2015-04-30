@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-push-1">
+<div class="col-md-5 col-md-push-1">
     <h3>All posts</h3>
     <?php foreach($this->posts as $post ): ?>
         <div class="row">
@@ -40,7 +40,7 @@
     </div>
 </div>
 
-<div class="col-md-5 pull-right col-xs-12">
+<div class="col-md-4 pull-right col-md-pull-1 col-xs-12">
     <h3>Recent posts</h3>
     <div class="list-group">
         <?php foreach($this->recent_posts as $recent_post):

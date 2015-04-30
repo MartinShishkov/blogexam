@@ -2,6 +2,7 @@
 <form method="post" class="form-horizontal">
     <fieldset>
         <legend>Add a new tag</legend>
+        <input type="text" name="formToken" value="<?php echo($_SESSION["formToken"]) ?>" hidden="">
         <div class="form-group">
             <label for="username" class="col-lg-2 control-label">Name:</label>
             <div class="col-lg-10">
