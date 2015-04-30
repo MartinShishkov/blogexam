@@ -28,6 +28,9 @@ class Posts_Controller extends Main_Controller{
             $post_title = htmlspecialchars(trim($_POST["post-title"]));
             $post_body = htmlspecialchars(trim($_POST["post-body"]));
             $post_tags = explode(',', trim($_POST["tags"]));
+            array_map("trim", $post_tags);
+
+            $post_tags = array_unique($post_tags);
 
             if(!empty($post_title) && !empty($post_body)){
                 $post = array(
@@ -50,7 +53,7 @@ class Posts_Controller extends Main_Controller{
                     $tag = new Tag_Model();
 
                     foreach($post_tags as $tag_name){
-                        $tag->add_tag_to_post($post["id"], htmlspecialchars(trim($tag_name)));
+                        $tag->add_tag_to_post($post["id"], htmlspecialchars($tag_name));
                     }
                 }
 

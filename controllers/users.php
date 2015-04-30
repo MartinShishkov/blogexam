@@ -9,11 +9,11 @@ class Users_Controller extends Main_Controller{
 
     public function register(){
         if(isset($_POST["username"]) && isset($_POST["password"])){
-            $username = trim($_POST["username"]);
-            $password = trim($_POST["password"]);
-            $confirm_password = trim($_POST["confirm-password"]);
+            $username = htmlspecialchars(trim($_POST["username"]));
+            $password = htmlspecialchars(trim($_POST["password"]));
+            $confirm_password = htmlspecialchars(trim($_POST["confirm-password"]));
 
-            if(!empty($username) && !empty($password))
+            if(!empty($username) && !empty($password) && !empty($confirm_password))
             {
                 if($password != $confirm_password){
                     echo("<p>Passwords do not match!</p>");
@@ -31,7 +31,7 @@ class Users_Controller extends Main_Controller{
                 }
             }
             else{
-                echo("Empty username or password are not allowed!");
+                echo("Invalid username or password!");
             }
         }
 
@@ -48,8 +48,8 @@ class Users_Controller extends Main_Controller{
         }
 
         if(isset($_POST["username"]) && isset($_POST["password"])){
-            $username = trim($_POST["username"]);
-            $password = trim($_POST["password"]);
+            $username = htmlspecialchars(trim($_POST["username"]));
+            $password = htmlspecialchars(trim($_POST["password"]));
 
             if(!empty($username) && !empty($password)){
                 $is_logged_in = $this->auth->login($username, $password);
@@ -57,7 +57,7 @@ class Users_Controller extends Main_Controller{
                     header("Location: " . $home_location);
                 }
             }
-            echo("Empty username or password are not allowed!");
+            echo("Invalid username or password!");
         }
 
         $template_name = DX_ROOT_DIR . $this -> views_dir . "login.php";

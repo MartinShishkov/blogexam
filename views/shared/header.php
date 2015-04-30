@@ -5,8 +5,8 @@
             $styles_path = $contents_path . '/styles';
             $bootstrap_path = $contents_path . '/bootstrap';
 
-            echo("<link href='{$bootstrap_path}/js/jquery-2.1.3.min.js' rel='stylesheet'>");
-            echo("<link href='{$bootstrap_path}/js/bootstrap.min.js' rel='stylesheet'>");
+            echo("<script src='{$bootstrap_path}/js/jquery-2.1.3.min.js'></script>");
+            echo("<script src='{$bootstrap_path}/js/bootstrap.min.js'></script>");
             echo("<link href='{$bootstrap_path}/css/bootstrap.min.css' rel='stylesheet'>");
             echo("<link href='{$bootstrap_path}/css/bootstrap-theme.min.css' rel='stylesheet'>");
             echo("<link href='{$styles_path}/main-styles.css' rel='stylesheet'>");

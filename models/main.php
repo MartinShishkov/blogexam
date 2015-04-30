@@ -39,11 +39,6 @@ class Main_Model{
 
         $args = array_merge($defaults, $args);
 
-//        $table = $args["table"];
-//        $limit = $args["limit"];
-//        $where = $args["where"];
-//        $columns = $args["columns"];
-
         extract($args);
 
         $query = "SELECT {$columns} FROM {$table}";

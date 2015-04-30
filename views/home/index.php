@@ -1,5 +1,5 @@
 <div class="col-md-6 col-md-push-1">
-    <h1>Home view</h1>
+    <h3>All posts</h3>
     <?php foreach($this->posts as $post ): ?>
         <div class="row">
             <div class="col-md-12">
