@@ -20,6 +20,8 @@ class Home_Controller extends Main_Controller{
         $this->recent_posts = $this->model->get_recent_posts();
         $this->all_tags = $tag_model->get_all_tags();
         $this->popular_tags = $tag_model->get_popular_tags();
+
+
     }
 
     public function index(){

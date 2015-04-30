@@ -17,7 +17,7 @@ class Auth{
             self::$is_logged_in = true;
             self::$logged_user = array(
                 "user_id" => $_SESSION["user_id"],
-                "username" => $_SESSION["username"]
+                "username" => $_SESSION["username"],
             );
         }
     }
@@ -58,6 +58,7 @@ class Auth{
             if(password_verify($password, $row["passwordHash"])){
                 $_SESSION["username"] = $username;
                 $_SESSION["user_id"] = $row["id"];
+                $_SESSION["formToken"] = uniqid(mt_rand(), true);
             }
 
             return true;

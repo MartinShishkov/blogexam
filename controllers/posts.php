@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Models\Comment_Model;
 use Models\Tag_Model;
 use Models\Tags_Posts_Model;
 
@@ -71,8 +72,8 @@ class Posts_Controller extends Main_Controller{
 
     // Visiting a post by an anonymous user
     public function view($id){
-        include_once DX_ROOT_DIR . "\\controllers\\comments.php";
-        $comments_controller = new Comments_Controller();
+        include_once DX_ROOT_DIR . "\\models\\comment.php";
+        $comment_model = new Comment_Model();
 
         if(isset($_POST["author_name"]) && isset($_POST["body"])){
             $name = trim($_POST["author_name"]);
@@ -85,7 +86,9 @@ class Posts_Controller extends Main_Controller{
                     $email = null;
                 }
 
-                $comments_controller->add($post_id, $name, $email, $body);
+                if($_POST["formToken"] === $_SESSION["formToken"]){
+                    $comment_model->create($post_id, $name, $email, $body);
+                }
             }
             else{
                 echo("Empty name or body are not allowed!");
@@ -102,7 +105,7 @@ class Posts_Controller extends Main_Controller{
 
             $this->model->visit($id);
             $tag_names = $this->model->get_tags($id);
-            $comments = $comments_controller->get_all($id);
+            $comments = $comment_model->get_all($id);
 
             include_once $this -> layout;
         }

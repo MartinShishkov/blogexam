@@ -27,7 +27,12 @@
     <div class="col-sm-6 col-sm-push-3 col-xs-12">
         <form method="post">
             <input type="text" name="post_id" value="<?php echo($post["id"])?>" hidden="">
-
+            <?php
+                if(!isset($_SESSION["formToken"])){
+                    $_SESSION['formToken'] = uniqid(mt_rand(), true);
+                }
+            ?>
+            <input type="hidden" name="formToken" value="<?php echo $_SESSION['formToken'] ?>"/>
             <div class="input-group margin-10-bottom">
                 <span class="input-group-addon" id="basic-addon1">Required</span>
                 <input type="text" name="author_name" class="form-control" placeholder="Name..." aria-describedby="basic-addon1" required="">
