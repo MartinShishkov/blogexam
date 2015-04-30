@@ -82,3 +82,7 @@ header{
 .nav > li:hover{
     background-color: #dee3ed;
 }
+
+.dotted{
+    border-bottom: 1px dotted;
+}

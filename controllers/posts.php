@@ -8,7 +8,7 @@ use Models\Tags_Posts_Model;
 class Posts_Controller extends Main_Controller{
 
     public function __construct(){
-        parent::__construct('views/posts/', get_class(), "post");
+        parent::__construct('views\posts\\', get_class(), "post");
     }
 
     public function index(){
@@ -46,7 +46,7 @@ class Posts_Controller extends Main_Controller{
                 if(!empty($post_arr)){
                     $post = $post_arr[0];
 
-                    include_once DX_ROOT_DIR . 'models/tag.php';
+                    include_once DX_ROOT_DIR . 'models\\tag.php';
                     $tag = new Tag_Model();
 
                     foreach($post_tags as $tag_name){
@@ -68,7 +68,7 @@ class Posts_Controller extends Main_Controller{
 
     // Visiting a post by an anonymous user
     public function view($id){
-        include_once DX_ROOT_DIR . "/controllers/comments.php";
+        include_once DX_ROOT_DIR . "\\controllers\\comments.php";
         $comments_controller = new Comments_Controller();
 
         if(isset($_POST["author_name"]) && isset($_POST["body"])){

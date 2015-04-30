@@ -4,7 +4,7 @@ namespace Controllers;
 
 class Users_Controller extends Main_Controller{
     public function __construct(){
-        parent::__construct('views/users/', get_class(), "user");
+        parent::__construct('views\users\\', get_class(), "user");
     }
 
     public function register(){
@@ -41,7 +41,7 @@ class Users_Controller extends Main_Controller{
     }
 
     public function login(){
-        $home_location = DX_ROOT_URL . 'home/index';
+        $home_location = DX_ROOT_URL . 'home\index';
 
         if(!empty($this->logged_user)){
             header("Location: " . $home_location);

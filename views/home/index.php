@@ -20,7 +20,7 @@
 
                     <div class="panel-footer">
                         <?php
-                            echo("<span>{$post["username"]}</span>");
+                            echo("<span>Posted by - {$post["username"]}</span>");
                             echo("<span class='float-right'>{$post["date_created"]}</span>");
                         ?>
                     </div>
@@ -48,12 +48,13 @@
     </div>
 
     <h3>Most popular tags</h3>
-    <?php foreach($popular_tags as $tag):
-        $search_post_path = DX_ROOT_URL . 'home/search/' . $tag;
+    <?php foreach($popular_tags as $key=>$value):
+        $search_post_path = DX_ROOT_URL . 'home/search/' . $key;
         ?>
         <a href="<?php echo($search_post_path)?>" class="list-group-item">
             <h4 class="list-group-item-heading">
-                <span class="label label-primary"><?php echo($tag);?></span>
+                <span class="label label-primary"><?php echo($key);?></span>
+                <span class="badge"><?php echo($value)?></span>
             </h4>
         </a>
     <?php endforeach ?>

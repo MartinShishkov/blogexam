@@ -5,7 +5,7 @@
             $styles_path = $contents_path . '/styles';
             $bootstrap_path = $contents_path . '/bootstrap';
 
-            echo("<link href='{$bootstrap_path}/js/jquery.js' rel='stylesheet'>");
+            echo("<link href='{$bootstrap_path}/js/jquery-2.1.3.min.js' rel='stylesheet'>");
             echo("<link href='{$bootstrap_path}/js/bootstrap.min.js' rel='stylesheet'>");
             echo("<link href='{$bootstrap_path}/css/bootstrap.min.css' rel='stylesheet'>");
             echo("<link href='{$bootstrap_path}/css/bootstrap-theme.min.css' rel='stylesheet'>");
@@ -39,7 +39,7 @@
                                     $logout_path = DX_ROOT_URL . 'users/logout';
 
                                     echo("<li><a href='{$posts_add_path}'>Publish</a></li>");
-                                    echo("<li><a href='{$logout_path}'>Logout{ {$this->logged_user["username"]} }</a></li>");
+                                    echo("<li><a href='{$logout_path}'>Logout{ <span class='dotted'>{$this->logged_user["username"]}</span> }</a></li>");
                                 }else{
                                     $login_path = DX_ROOT_URL . 'users/login';
                                     $register_path = DX_ROOT_URL . 'users/register';

@@ -17,7 +17,7 @@ class Tag_Model extends Main_Model{
         if(!empty($tag_arr)){
             $tag = $tag_arr[0];
 
-            include_once DX_ROOT_DIR . "models/tags_posts.php";
+            include_once DX_ROOT_DIR . "models\\tags_posts.php";
             $tags_posts = new Tags_Posts_Model();
 
             $tag_post = array(
@@ -53,7 +53,7 @@ LIMIT 4");
 
         $tag_names = array();
         foreach($tags as $tag){
-            array_push($tag_names, $tag["name"]);
+            $tag_names[$tag["name"]] = $tag["NumberOfPosts"];
         }
 
         return $tag_names;

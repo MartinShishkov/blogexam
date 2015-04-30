@@ -8,6 +8,10 @@ class Comments_Controller extends Main_Controller{
     }
 
     public function add($post_id, $name, $email, $body){
+        $name = trim($name);
+        $email = trim($email);
+        $body = trim($body);
+
         if(!empty($post_id) && !empty($name) && !empty($body)){
             $comment = array(
                 "post_id" => $post_id,

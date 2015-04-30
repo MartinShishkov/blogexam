@@ -1,6 +1,6 @@
 <?php
 
-define("DX_ROOT_DIR", dirname(__FILE__) . '/');
+define("DX_ROOT_DIR", dirname(__FILE__) . '\\');
 define("DX_ROOT_PATH", basename(dirname(__FILE__)) . '/');
 define( 'DX_ROOT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/examblog/' );
 
