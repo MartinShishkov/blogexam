@@ -32,6 +32,7 @@ class Posts_Controller extends Main_Controller{
             array_map("trim", $post_tags);
 
             $post_tags = array_unique($post_tags);
+            $post_tags = array_filter($post_tags);
 
             if(!empty($post_title) && !empty($post_body) && !empty($post_tags) && $_POST["formToken"] === $_SESSION["formToken"]){
                 $post = array(
@@ -61,7 +62,7 @@ class Posts_Controller extends Main_Controller{
                 header("Location: " . DX_ROOT_URL);
             }
             else{
-                echo("Empty title or body are not allowed!");
+                echo("Empty title, body or tags are not allowed!");
             }
         }
 
