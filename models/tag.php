@@ -30,14 +30,6 @@ class Tag_Model extends Main_Model{
     }
 
     public function get_popular_tags(){
-        //SELECT t.name, count(1) as NumberOfPosts FROM posts p
-        //INNER JOIN tags_posts pt
-        //ON p.id=pt.post_id
-        //INNER JOIN tags t
-        //ON t.id=pt.tag_id
-        //GROUP BY t.name
-        //ORDER BY NumberOfPosts DESC
-
         $query = sprintf("SELECT t.name, count(1) as NumberOfPosts FROM posts p
 INNER JOIN posts_tags pt
 ON p.id=pt.post_id
@@ -54,6 +46,21 @@ LIMIT 4");
         $tag_names = array();
         foreach($tags as $tag){
             $tag_names[$tag["name"]] = $tag["NumberOfPosts"];
+        }
+
+        return $tag_names;
+    }
+
+    public function get_all_tags(){
+        $query = sprintf("SELECT t.name FROM tags t");
+
+        $result_set = $this->db->query($query);
+
+        $tags = $this->process_results($result_set);
+
+        $tag_names = array();
+        foreach($tags as $tag){
+            $tag_names[] = $tag["name"];
         }
 
         return $tag_names;

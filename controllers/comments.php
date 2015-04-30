@@ -15,9 +15,9 @@ class Comments_Controller extends Main_Controller{
         if(!empty($post_id) && !empty($name) && !empty($body)){
             $comment = array(
                 "post_id" => $post_id,
-                "author_name" => $name,
-                "body" => $body,
-                "author_email" => empty($email) ? null : $email,
+                "author_name" => htmlspecialchars($name),
+                "body" => htmlspecialchars($body),
+                "author_email" => empty($email) ? null : htmlspecialchars($email),
                 "date_created" => $date = date('Y-m-d H:i:s', time())
             );
 

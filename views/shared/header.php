@@ -36,9 +36,11 @@
 
                                 if(!empty($this->logged_user)){
                                     $posts_add_path = DX_ROOT_URL . 'posts/add';
+                                    $tags_add_path = DX_ROOT_URL . 'tags/add';
                                     $logout_path = DX_ROOT_URL . 'users/logout';
 
                                     echo("<li><a href='{$posts_add_path}'>Publish</a></li>");
+                                    echo("<li><a href='{$tags_add_path}'>New Tag</a></li>");
                                     echo("<li><a href='{$logout_path}'>Logout{ <span class='dotted'>{$this->logged_user["username"]}</span> }</a></li>");
                                 }else{
                                     $login_path = DX_ROOT_URL . 'users/login';

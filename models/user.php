@@ -7,6 +7,5 @@ class User_Model extends Main_Model{
         parent::__construct(array(
            "table" => "users"
         ));
-
     }
 }

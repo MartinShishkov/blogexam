@@ -31,12 +31,12 @@ if(!empty($request)){
                 $param = $components[2];
             }
 
-            include_once 'controllers/' . $controller . '.php';
+            include_once 'controllers\\' . $controller . '.php';
         }
     }
 }
 
-$controller_class = "\Controllers\\" . ucfirst($controller) . "_Controller";
+$controller_class = "\\Controllers\\" . ucfirst($controller) . "_Controller";
 
 $controller_instance = new $controller_class();
 

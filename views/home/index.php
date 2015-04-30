@@ -1,6 +1,6 @@
 <div class="col-md-6 col-md-push-1">
     <h1>Home view</h1>
-    <?php foreach($posts as $post ): ?>
+    <?php foreach($this->posts as $post ): ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -28,12 +28,22 @@
             </div>
         </div>
     <?php endforeach ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <nav>
+                <ul class="pager">
+                    <li><a href="#">Previous</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
 
 <div class="col-md-5 pull-right col-xs-12">
     <h3>Recent posts</h3>
     <div class="list-group">
-        <?php foreach($recent_posts as $recent_post):
+        <?php foreach($this->recent_posts as $recent_post):
             $recent_post_path = DX_ROOT_URL . 'posts/view/' . $recent_post["id"];
             ?>
             <a href="<?php echo($recent_post_path)?>" class="list-group-item">
@@ -48,7 +58,7 @@
     </div>
 
     <h3>Most popular tags</h3>
-    <?php foreach($popular_tags as $key=>$value):
+    <?php foreach($this->popular_tags as $key=>$value):
         $search_post_path = DX_ROOT_URL . 'home/search/' . $key;
         ?>
         <a href="<?php echo($search_post_path)?>" class="list-group-item">
@@ -58,4 +68,20 @@
             </h4>
         </a>
     <?php endforeach ?>
+
+    <h3>All tags</h3>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <?php foreach($this->all_tags as $tag_name):
+                $search_post_path = DX_ROOT_URL . 'home/search/' . $tag_name;
+                ?>
+                <div class="margin3 display-inline">
+                    <a href="<?php echo($search_post_path);?>">
+                        <span class="label label-success"><?php echo($tag_name);?></span>
+                    </a>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
 </div>
+

@@ -16,6 +16,10 @@ html, body{
     margin: 2px;
 }
 
+.margin3{
+    margin: 3px;
+}
+
 .margin-10-bottom{
     margin-bottom: 10px;
 }
@@ -85,4 +89,8 @@ header{
 
 .dotted{
     border-bottom: 1px dotted;
+}
+
+.display-inline{
+    display: inline-block;
 }
