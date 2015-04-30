@@ -9,7 +9,7 @@
                             <?php
                                 $post_path = DX_ROOT_URL . 'posts/view/' . $post["id"];
                                 echo("<a href='{$post_path}'>{$post["title"]}</a>");
-                                echo("<p class='pull-right'>Viewed - {$post["visits"]}</p>");
+                                echo("<p class='pull-right'>Viewed : {$post["visits"]}</p>");
                             ?>
                         </h3>
                     </div>

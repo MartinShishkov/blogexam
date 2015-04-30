@@ -33,7 +33,7 @@ class Posts_Controller extends Main_Controller{
 
             $post_tags = array_unique($post_tags);
 
-            if(!empty($post_title) && !empty($post_body)){
+            if(!empty($post_title) && !empty($post_body) && !empty($post_tags) && $_POST["formToken"] === $_SESSION["formToken"]){
                 $post = array(
                     "title" => $post_title,
                     "body" => $post_body,

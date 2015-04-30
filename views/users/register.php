@@ -2,6 +2,13 @@
     <form method="post" class="form-horizontal">
         <fieldset>
             <legend>Register</legend>
+            <?php
+                if(!isset($_SESSION["formToken"])){
+                    $_SESSION["formToken"] = uniqid(mt_rand(), true);
+                }
+            ?>
+
+            <input type="text" name="formToken" value="<?php echo($_SESSION["formToken"]) ?>" hidden="">
             <div class="form-group">
                 <label for="username" class="col-lg-2 control-label">Username:</label>
                 <div class="col-lg-10">

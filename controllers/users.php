@@ -13,7 +13,10 @@ class Users_Controller extends Main_Controller{
             $password = htmlspecialchars(trim($_POST["password"]));
             $confirm_password = htmlspecialchars(trim($_POST["confirm-password"]));
 
-            if(!empty($username) && !empty($password) && !empty($confirm_password))
+            if(!empty($username) &&
+                !empty($password) &&
+                !empty($confirm_password) &&
+                $_POST["formToken"] === $_SESSION["formToken"])
             {
                 if($password != $confirm_password){
                     echo("<p>Passwords do not match!</p>");
@@ -51,7 +54,7 @@ class Users_Controller extends Main_Controller{
             $username = htmlspecialchars(trim($_POST["username"]));
             $password = htmlspecialchars(trim($_POST["password"]));
 
-            if(!empty($username) && !empty($password)){
+            if(!empty($username) && !empty($password) && $_POST["formToken"] === $_SESSION["formToken"]){
                 $is_logged_in = $this->auth->login($username, $password);
                 if($is_logged_in){
                     header("Location: " . $home_location);

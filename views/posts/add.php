@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-xs-4 col-xs-push-3">
         <form method="post">
+            <input type="text" name="formToken" value="<?php echo($_SESSION["formToken"]);?>" hidden="">
             <div class="input-group margin-10-bottom">
                 <span class="input-group-addon" id="basic-addon1">Title*</span>
                 <input type="text" name="post-title" class="form-control" placeholder="Title..." aria-describedby="basic-addon1" required="">
