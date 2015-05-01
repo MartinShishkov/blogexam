@@ -69,7 +69,6 @@ class Main_Model{
         $values = implode($values, ',');
 
         $query = "INSERT INTO {$this->table}($keys) VALUES ($values)";
-        var_dump($query);
 
         $this->db->query($query);
 

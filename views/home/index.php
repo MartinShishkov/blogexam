@@ -33,12 +33,12 @@
             <nav>
                 <ul class="pager">
                     <?php
-                        $current_page = 1;
+                        $current_page = 0;
 
                         if(isset($_GET["page"])){
                             $current_page = $_GET["page"];
                             if($current_page < 0){
-                                $current_page = 1;
+                                $current_page = 0;
                             }
                         }
 
