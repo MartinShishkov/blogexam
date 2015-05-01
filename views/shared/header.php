@@ -51,11 +51,12 @@
                                 }
                             ?>
                         </ul>
-                        <form method="post" class="navbar-form navbar-left" role="search">
+                        <form method="get" action="<?php echo(DX_ROOT_URL . "home")?>" class="navbar-form navbar-left" role="search">
                             <div class="form-group">
+                                <input type="text" name="page" value="0" hidden="">
                                 <input type="text" name="search" class="form-control" placeholder="Search">
                             </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default">Search</button>
                         </form>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

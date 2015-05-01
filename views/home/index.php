@@ -32,8 +32,29 @@
         <div class="col-xs-12">
             <nav>
                 <ul class="pager">
-                    <li><a href="#">Previous</a></li>
-                    <li><a href="#">Next</a></li>
+                    <?php
+                        $current_page = 1;
+
+                        if(isset($_GET["page"])){
+                            $current_page = $_GET["page"];
+                            if($current_page < 0){
+                                $current_page = 1;
+                            }
+                        }
+
+                        $search = isset($_GET["search"]) ? "&search=" . $_GET["search"] : "";
+                        $next_page = DX_ROOT_URL . "home?page=" . ($current_page + 1) .  $search;
+
+                        if( !($current_page - 1 < 0 ) ){
+                            $previous_page = DX_ROOT_URL . "home?page=" . ($current_page - 1) . $search;
+                        }
+                        else{
+                            $previous_page = DX_ROOT_URL . "home?page=" . 0 . $search;
+                        }
+                    ?>
+
+                    <li><a href="<?php echo($previous_page)?>">Previous</a></li>
+                    <li><a href="<?php echo($next_page)?>">Next</a></li>
                 </ul>
             </nav>
         </div>
@@ -59,7 +80,7 @@
 
     <h3>Most popular tags</h3>
     <?php foreach($this->popular_tags as $key=>$value):
-        $search_post_path = DX_ROOT_URL . 'home/search/' . $key;
+            $search_post_path = DX_ROOT_URL . 'home?page=0&search=' . $key;
         ?>
         <a href="<?php echo($search_post_path)?>" class="list-group-item">
             <h4 class="list-group-item-heading">
@@ -73,7 +94,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <?php foreach($this->all_tags as $tag_name):
-                $search_post_path = DX_ROOT_URL . 'home/search/' . $tag_name;
+                $search_post_path = DX_ROOT_URL . 'home?page=0&search=' . $tag_name;
                 ?>
                 <div class="margin3 display-inline">
                     <a href="<?php echo($search_post_path);?>">

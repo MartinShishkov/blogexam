@@ -14,7 +14,9 @@ class Post_Model extends Main_Model{
 
     public function get_posts_with_author(){
         //SELECT p.id, p.title, p.body, p.date_created, p.visits, u.username FROM posts p INNER JOIN users u ON p.user_id=u.id
-        $query = sprintf("SELECT p.id, p.title, p.body, p.date_created, p.visits, u.username FROM posts p INNER JOIN users u ON p.user_id=u.id");
+        $query = sprintf("SELECT p.id, p.title, p.body, p.date_created, p.visits, u.username FROM posts p
+INNER JOIN users u ON p.user_id=u.id
+ORDER BY p.visits ASC");
 
         $result_set = $this->db->query($query);
 
